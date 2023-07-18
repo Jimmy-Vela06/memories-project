@@ -3,14 +3,18 @@ import bodyParser from "body-parser";
 import mongoose from "mongoose";
 import cors from "cors";
 
+import postRoutes from "./routes/posts.js";
+
 const app = express();
+
+app.use("/posts", postRoutes);
 
 app.use(bodyParser.json({ limit: "30mb", extended: true }));
 app.use(bodyParser.urlencoded({ limit: "30mb", extended: true }));
 app.use(cors());
 
 const CONNECTION_URL =
-  "mongodb+srv://jimmyvela6:tigres123@cluster0.h3byci5.mongodb.net/?retryWrites=true&w=majority";
+  "mongodb+srv://jimmyvela6:gDd3bOUL9K9tX1sX@cluster0.h3byci5.mongodb.net/?retryWrites=true&w=majority";
 
 const PORT = process.env.PORT || 5001;
 
@@ -25,4 +29,7 @@ mongoose
   )
   .catch((error) => console.log(`${error} did not connect`));
 
-// mongoose.set("useFindAndModify", false);
+/*
+NOT REQUIRED IN VERISON 7
+mongoose.set("useFindAndModify", false);
+*/
