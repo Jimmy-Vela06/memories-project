@@ -1,0 +1,17 @@
+// {
+//   "keyboard.touchbar.enabled": false,
+//   "editor.fontSize": 12,
+//   "editor.cursorStyle": "line",
+//   "editor.wordWrap": "off",
+//   "prettier.printWidth": 120,
+//   "prettier.bracketSameLine": false,
+//   "prettier.bracketSpacing": true,
+//   "prettier.insertPragma": false,
+//   "prettier.jsxSingleQuote": true,
+//   "vs-code-prettier-eslint.prettierLast": false,
+//   "editor.defaultFormatter": null,
+//   "prettier.singleQuote": true,
+//   "[javascript]": {
+//     "editor.defaultFormatter": "esbenp.prettier-vscode"
+//   }
+// }
