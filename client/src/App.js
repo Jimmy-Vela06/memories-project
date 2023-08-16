@@ -1,48 +1,30 @@
-import React, { useState, useEffect } from "react";
-import { Container, AppBar, Typography, Grow, Grid } from "@material-ui/core";
+import React, { Component } from 'react';
+import { BrowserRouter, Routes, Route, Navigate } from 'react-router-dom';
 
-import { useDispatch } from "react-redux";
+import { Container } from '@material-ui/core';
 
-import { getPosts } from "./actions/posts";
-
-import Posts from "./components/Posts/Posts.js";
-import Form from "./components/Form/Form.js";
-
-import memories from "./images/memories.png";
-
-import useStyles from "./styles.js";
+import PostDetails from './components/PostDetails/PostDetails';
+import Navbar from './components/Navbar/Navbar';
+import Home from './components/Home/Home';
+import Auth from './components/Auth/Auth';
 
 const App = () => {
-  const [currentId, setCurrentId] = useState(null);
-
-  const classes = useStyles();
-
-  const dispatch = useDispatch();
-  useEffect(() => {
-    dispatch(getPosts());
-  }, [currentId, dispatch]);
-
+  const user = JSON.parse(localStorage.getItem('profie'));
   return (
-    <Container maxWidth="lg">
-      <AppBar className={classes.appBar} position="static" color="inherit">
-        <Typography className={classes.heading} variant="h3" align="center">
-          Memoriae{" "}
-        </Typography>
-        <img className={classes.image} src={memories} alt="memories" height="60" />
-      </AppBar>
-      <Grow in>
-        <Container>
-          <Grid container className={classes.mainContainer} justifyContent="space-between" alignItems="stretch" spacing={3}>
-            <Grid item xs={12} sm={7}>
-              <Posts setCurrentId={setCurrentId} />
-            </Grid>
-            <Grid item xs={12} sm={4}>
-              <Form currentId={currentId} setCurrentId={setCurrentId} />
-            </Grid>
-          </Grid>
-        </Container>
-      </Grow>
-    </Container>
+    <BrowserRouter>
+      <Container maxWidth='xl'>
+        <Navbar />
+        <Routes>
+          <Route path='/' element={<Navigate to='posts' />} />
+          <Route path='/posts' element={<Home />} />
+          <Route path='/posts/search' element={<Home />} />
+          <Route path='/posts/:id' Component={PostDetails} />
+          <Route path='/auth' element={<Auth />} />
+          {/* <Route path="/auth" element={() => (!user ? <Auth /> : <Navigate to="/posts" />)} /> */}
+          {/* <Route path="/auth" element={() => (!user ? <Auth /> : <Navigate to="/posts" />)} /> */}
+        </Routes>
+      </Container>
+    </BrowserRouter>
   );
 };
 
