@@ -21,7 +21,6 @@ const App = () => {
           <Route path='/posts/:id' Component={PostDetails} />
           <Route path='/auth' element={<Auth />} />
           {/* <Route path="/auth" element={() => (!user ? <Auth /> : <Navigate to="/posts" />)} /> */}
-          {/* <Route path="/auth" element={() => (!user ? <Auth /> : <Navigate to="/posts" />)} /> */}
         </Routes>
       </Container>
     </BrowserRouter>

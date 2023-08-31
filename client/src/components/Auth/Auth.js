@@ -1,20 +1,21 @@
-import React, { useState } from "react";
-import { useNavigate } from "react-router-dom";
+import React, { useState } from 'react';
+import { useNavigate } from 'react-router-dom';
 
-import { useDispatch } from "react-redux";
+import { useDispatch } from 'react-redux';
 
-import { GoogleLogin } from "@react-oauth/google";
-import jwtDecode from "jwt-decode";
+import { GoogleLogin } from '@react-oauth/google';
 
-import { Avatar, Button, Container, Paper, Grid, Typography } from "@material-ui/core";
-import LockOutlinedIcon from "@material-ui/icons/LockOutlined.js";
-import useStyles from "./styles";
+import jwtDecode from 'jwt-decode';
 
-import Input from "./Input.js";
+import { Avatar, Button, Container, Paper, Grid, Typography } from '@material-ui/core';
+import LockOutlinedIcon from '@material-ui/icons/LockOutlined.js';
+import useStyles from './styles';
 
-import { signin, signup } from "../../actions/auth";
+import Input from './Input.js';
 
-const initFormDataState = { firstName: "", lastName: "", password: "", confirmPassword: "" };
+import { signin, signup } from '../../actions/auth';
+
+const initFormDataState = { firstName: '', lastName: '', password: '', confirmPassword: '' };
 
 const Auth = () => {
   const classes = useStyles();
@@ -26,7 +27,6 @@ const Auth = () => {
   const handleShowPassword = () => setShowPassword((prevShowPassword) => !prevShowPassword);
 
   const [isSignup, setIsSignup] = useState(false);
-
   const switchMode = () => {
     setIsSignup((prevIsSignup) => !prevIsSignup);
     handleShowPassword(false);
@@ -36,7 +36,6 @@ const Auth = () => {
 
   const handleSubmit = (event) => {
     event.preventDefault();
-    // console.log(formData);
 
     if (isSignup) {
       dispatch(signup(formData, navigate));
@@ -50,16 +49,14 @@ const Auth = () => {
   };
 
   const googleSuccess = async (credentialResponse) => {
-    // console.log(credentialResponse);
     if (credentialResponse.credential != null) {
       const USER_CREDENTIAL = jwtDecode(credentialResponse.credential);
       const result = USER_CREDENTIAL;
       const token = credentialResponse.credential;
-      // console.log(token);
-      // console.log(result);
+
       try {
-        dispatch({ type: "AUTH", data: { result, token } });
-        navigate("/");
+        dispatch({ type: 'AUTH', data: { result, token } });
+        navigate('/');
       } catch (error) {
         console.log(error);
       }
@@ -67,39 +64,44 @@ const Auth = () => {
   };
 
   const googleFailure = () => {
-    console.log("Google sign in was unsuccessful");
+    console.log('Google sign in was unsuccessful');
   };
-
   return (
-    <Container component="main" maxWidth="xs">
+    <Container component='main' maxWidth='xs'>
       <Paper className={classes.paper} elevation={3}>
         <Avatar className={classes.avatar}>
           <LockOutlinedIcon />
         </Avatar>
-        <Typography variant="h5">{isSignup ? "Sign up" : "Sign in"}</Typography>
+        <Typography variant='h5'>{isSignup ? 'Sign up' : 'Sign in'}</Typography>
         <form className={classes.form} onSubmit={handleSubmit}>
           <Grid container spacing={3}>
             {isSignup && (
               <>
-                <Input name="firstName" label="First Name" handleChange={handleChange} autoFocus half />
-                <Input name="LastName" label="Last Name" handleChange={handleChange} half />
+                <Input name='firstName' label='First Name' handleChange={handleChange} autoFocus half />
+                <Input name='LastName' label='Last Name' handleChange={handleChange} half />
               </>
             )}
-            <Input name="email" label="Email Address" handleChange={handleChange} type="email" />
-            <Input name="password" label="Password" handleChange={handleChange} type={showPassword ? "text" : "password"} handleShowPassword={handleShowPassword} />
-            {isSignup && <Input name="confirmPassword" label="Repeat Password" handleChange={handleChange} type="password" />}
+            <Input name='email' label='Email Address' handleChange={handleChange} type='email' />
+            <Input
+              name='password'
+              label='Password'
+              handleChange={handleChange}
+              type={showPassword ? 'text' : 'password'}
+              handleShowPassword={handleShowPassword}
+            />
+            {isSignup && <Input name='confirmPassword' label='Repeat Password' handleChange={handleChange} type='password' />}
           </Grid>
-          <Button type="submit" fullWidth variant="contained" color="primary" className={classes.submit}>
-            {isSignup ? "Sign Up" : "Sign In"}
+          <Button type='submit' fullWidth variant='contained' color='primary' className={classes.submit}>
+            {isSignup ? 'Sign Up' : 'Sign In'}
           </Button>
 
           <Grid>
             <GoogleLogin onSuccess={googleSuccess} onError={googleFailure} />
           </Grid>
 
-          <Grid container justifyContent="flex-end">
+          <Grid container justifyContent='flex-end'>
             <Grid item>
-              <Button onClick={switchMode}>{isSignup ? "Already have an account? Sign in." : "Sign up to create new account."}</Button>
+              <Button onClick={switchMode}>{isSignup ? 'Already have an account? Sign in.' : 'Sign up to create new account.'}</Button>
             </Grid>
           </Grid>
         </form>
