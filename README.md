@@ -39,8 +39,6 @@ I WANT to be able to create and share memories and allow others to interact by l
 SO I can share my expiereces.
 ```
 
-Link to GitHub Repository:
-https://github.com/Jimmy-Vela06/memories-project-MERN
 
 ## Images
 
