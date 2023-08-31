@@ -31,7 +31,7 @@ The Memoriae App will allow you to share memories with others. Its a blog applic
 - Redux
 - Google OAuth
 
-## User Story
+## **User Story**
 
 ```
 AS A user who wants to be able to share memories with others
@@ -40,18 +40,18 @@ SO I can share my expiereces.
 ```
 
 
-## Images
+## **Images**
 
 <img src="./assets/home.png" width=60%>
 <img src="./assets/signin.png" width=60%>
 <img src="./assets/detailPost.png" width=60%>
 
-## Links
+## **Links**
 
 Link to GitHub Repository:
 https://github.com/Jimmy-Vela06/memories-project-MERN
 
-## License
+## **License**
 
 MIT License
 
