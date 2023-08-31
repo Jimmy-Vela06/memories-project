@@ -1,6 +1,6 @@
 # Memoriae
 
-## ![MIT license](https://img.shields.io/badge/License-MIT-blue.svg) ![MERN](https://img.shields.io/badge/License-MERN-blue.svg)
+## ![MIT license](https://img.shields.io/badge/License-MIT-red.svg) ![MERN](https://img.shields.io/badge/License-MERN-blue.svg)
 
 ## **Table of Contents:**
 
