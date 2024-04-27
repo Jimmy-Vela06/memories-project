@@ -5,7 +5,7 @@
 ## Table of Contents:
 
 - [Memoriae](#memoriae)
-  - [ ](#----------)
+  - [          ](#----------)
   - [Table of Contents:](#table-of-contents)
   - [Description](#description)
   - [Demo](#demo)
@@ -22,7 +22,7 @@ Blog application that allows a user to upload a memory and share with others.
 
 ## Demo
 
-![My demo](./demo.gif)
+![My demo](<./Memoriae%20(2).gif>)
 
 ## Technologies
 
